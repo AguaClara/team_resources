@@ -60,6 +60,23 @@ plt.show()
 ![linear](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/linear.png?raw=true)
 Figure 1: Captions are very important for figures. Captions go below figures.
 
+### Figure requirements
+ - Create the graph using python (not Excel)
+ - If the x axis is time then make zero time reflect the beginning of the test.
+ - Use a white background for all graphs.
+ - Most data will have both x and y values and thus should be presented using an xy scatter plot.
+ - Label all axes and include units where appropriate.
+ - Axis scale labels should be in the margin of the graph and not inside the graph border.
+ - Eliminate parts of the range in both x and y axis that aren't used or that aren't meaningful.
+ - Place a caption with a brief description below the graph. Add this caption using the wiki formatting, not in your graphing software.
+ - Use data symbols to show data points unless there is so much data that the symbols overlap. If the data symbols overlap it is better to connect the data points with a line and not show the data symbols.
+ - When presenting multiple plots on a single graph make sure that it is easy to distinguish the plots using the legend.
+ - If curve fitting is used explain why and include the equation (elsewhere in the report).
+ - If a model or theoretical curve is presented it should be a smooth curve without data points.
+ - Use the same font in the graphs as you use in the text of the report.
+ - Insert the graph in your report after the first reference to it in the text. Inserted the graph after the next paragraph break
+ - Scale the size of the graph so it is large enough to see the data and read the text without having to follow a link to see a larger image. Avoid using hyperlinks on images because that causes the export to Microsoft Word option to not include the image.
+
 After describing a particular result, within a paragraph, go on to connect your work to fundamental physics/chemistry/statics/fluid mechanics, or whatever field is appropriate. Analyze your results and compare with theoretical expectations; or, if you have not yet done the experiments, describe your expectations based on established knowledge. Include implications of your results. How will your results influence the design of AguaClara plants? If possible provide clear recommendations for design changes that should be adopted. Show your experimental data in a professional way using the following guidelines:
 * Why did you get those results/data?
 * Did these results line up with expectations?
