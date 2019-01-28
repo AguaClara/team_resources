@@ -4,7 +4,7 @@ Include a brief description here about your team's purpose and objectives.
 ## Research Advisor
 Research Advisor (ra@cornell.edu)
 
-## Members
+## Current Members
   * First Member (member1@cornell.edu)
   * Second Member (member2@cornell.edu)
   * Third Member (member3@cornell.edu)
