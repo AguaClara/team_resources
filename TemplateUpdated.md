@@ -33,17 +33,21 @@ Explain your apparatus setup using enough detail such that future teams can recr
   \[\frac{-b\pm\sqrt{b^2-4ac}}{2a}\]
 
 * Schematic (label parts)
-  <p align="center"> <img src="/Images/Example Schematic.png" height=300> </p>
+  <p align="center">
+    <img src="/Images/Example Schematic.png" height=300>
+  </p>
 
   <p align="center">
-  Figure 1. Above is an example schematic drawing of the Summer 2018 High Rate Sedimentation apparatus. It is labeled with components, flow paths, sensors, and reactor geometry.
+    Figure 1. Above is an example schematic drawing of the Summer 2018 High Rate Sedimentation apparatus. It is labeled with components, flow paths, sensors, and reactor geometry.
   </p>
 
 * Image (from lab, label parts)
   <p align="center">
-  <img src="/Images/Example Lab Image.JPG" height=300>
+    <img src="/Images/Example Lab Image.JPG" height=300>
   </p>
-  <p align="center"> Figure 2. Any photos taken in the lab should be clearly labeled and captioned as well. </p>
+  <p align="center">
+    Figure 2. Any photos taken in the lab should be clearly labeled and captioned as well.
+  </p>
 
 * Materials (manufacturer, dimensions, and other specifications)
 * Complications in construction
@@ -59,22 +63,36 @@ In other words, there should not be two distinct paragraphs, but instead one par
 When describing your results, present your data, using the guidelines below:
 * What happened? What did you find?
 * Show your experimental data in a professional way.
+
 ```python
 import aguaclara.research.procoda_parser as pp
 import matplotlib.pyplot as plt
 import numpy as np
 
-time, influent_turbidity, effluent_turbidity = pp.get_data_by_time(path="Data",
-      columns=[0,3, 4], start_date="6-14-2018", start_time="14:30")
+time, influent_turbidity, effluent_turbidity = pp.get_data_by_time(
+      path="Data", columns=[0, 3, 4], start_date="6-14-2018",
+      start_time="15:40", end_time="23:30")
 elapsed_time = (np.array(time)-time[0])*24
 
 fig, ax1 = plt.subplots()
-plt.plot(elapsed_time, effluent_turbidity)
-plt.plot(elapsed_time, influent_turbidity)
-plt.xlabel("Time (hours)")
-plt.ylabel("Effluent Turbidity (NTU)")
+ax1.set_xlabel("Time (hours)")
+ax1.set_ylabel("Effluent Turbidity (NTU)")
+line1, = ax1.plot(elapsed_time, effluent_turbidity, color="blue")
+
+ax2 = ax1.twinx()
+ax2.set_ylabel("Influent Turbidity (NTU)")
+ax2.set_ylim(60,120)
+line2, = ax2.plot(elapsed_time, influent_turbidity, color="green")
+
+plt.legend((line1, line2), ("Effluent", "Influent"))
+plt.savefig("Turbidity.png")
 ```
-Figure 3. Descriptive captions are very important for figures. Rather than including a title above your figure, write a caption below.
+<p align="center">
+  <img src="/Images/Turbidity.png">
+</p>
+<p align="center">
+  Figure 3. Descriptive captions are very important for figures. Rather than including a title above your figure, write a caption below.
+</p>
 
 ### Figure requirements
  - Create the graph using python (not Excel)
