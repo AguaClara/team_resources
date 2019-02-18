@@ -1,9 +1,9 @@
 # AguaClara Research Report & Manual Template
 #### Natalie Mottl, William Pennock, Janak Shah, and Jillian Whiting
-#### February 20, 2018
+#### February 20, 2019
 
 # Template Description
-This template will lay out all possible sections that could be used for a research report and manual. All research reports and manuals should strive to comply with this template, but every team will use different parts. In order to use this template, copy this file from the AguaClara team resources repository to your team's repository, and rename it for your team in a format similar to  "[Team Name] [Semester]". An example would be "Filter and Treatment Train Flow Control Spring 2017." For additional information on all the possibilities in markdown files, refer to the AguaClara Interactive Tutorial and the AguaClara Tutorial training pages. After you complete that step, please delete this description and everything above this.
+This template will lay out all possible sections that could be used for a research report and manual. All research reports and manuals should strive to comply with this template, but every team will use different parts. In order to use this template, copy this file from the AguaClara team resources repository to your team's repository, and rename it for your team in a format similar to  "[Team Name] [Semester]". An example would be "Filter and Treatment Train Flow Control Spring 2017." For additional information on all the possibilities in markdown files, refer to the [AguaClara Interactive Tutorial](https://github.com/AguaClara/aguaclara_tutorial) and the [AguaClara Tutorial training pages](https://aguaclara.github.io/aguaclara_tutorial/). After you complete that step, please delete this description and everything above this.
 
 # Team Name, Semester Year
 #### Authors
@@ -16,7 +16,7 @@ Briefly summarize your previous work, goals and objectives, what you have accomp
 Explain how the completion of your challenge will affect AguaClara and the mission of providing safe drinking water (or sustainable wastewater treatment!). If this is a continuing team, how will your contribution build upon previous research? What needs to be further discovered or defined? If this is a new team, what prompted the inclusion of this team?
 
 ## Literature Review and Previous Work
-Discuss what is already known about your research area based on both external work and that of past AguaClara Teams. Connect your objectives with what is already known and explain what additional contribution you intend to make. Make sure to add APA formatted in-text citations. If you mention the author(s) in your sentence, you can simply give the year of publication.[(Logan et. al. 1987)](http://www.jstor.org/stable/pdf/25043431.pdf?acceptTC=true)
+Discuss what is already known about your research area based on both external work and that of past AguaClara Teams. Connect your objectives with what is already known and explain what additional contribution you intend to make. Make sure to add APA formatted in-text citations. If you mention the author(s) in your sentence, you can simply give the year of publication. [(Logan et. al. 1987)](http://www.jstor.org/stable/pdf/25043431.pdf?acceptTC=true)
 
 
 ## Methods
@@ -26,15 +26,26 @@ Below, some example sections are given. Sectioning the report is meant to keep s
 
 ### Experimental Apparatus
 Explain your apparatus setup using enough detail such that future teams can recreate your apparatus. Make sure to explain why you built it this way. Create a schematic drawing of the apparatus (not a photo) that has clearly labeled components, flow paths, sensors, and reactor geometry.
-* Design (calculations, constraints)
 
-  $\frac{-b\pm\sqrt{b^2-4ac}}{2a}$
+* Design (calculations, constraints):
+  * Use LaTeX to format equations in line ($\frac{-b\pm\sqrt{b^2-4ac}}{2a}$) or centered:
+
+  \[\frac{-b\pm\sqrt{b^2-4ac}}{2a}\]
+
 * Schematic (label parts)
+  <p align="center"> <img src="/Images/Example Schematic.png" height=300> </p>
 
-  <img src="https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/IMG_0009.jpg?raw=true" height=250 width=200>
+  <p align="center">
+  Figure 1. Above is an example schematic drawing of the Summer 2018 High Rate Sedimentation apparatus. It is labeled with components, flow paths, sensors, and reactor geometry.
+  </p>
 
-* Image (from lab; label parts)
-* Materials (dimensions, materials)
+* Image (from lab, label parts)
+  <p align="center">
+  <img src="/Images/Example Lab Image.JPG" height=300>
+  </p>
+  <p align="center"> Figure 2. Any photos taken in the lab should be clearly labeled and captioned as well. </p>
+
+* Materials (manufacturer, dimensions, and other specifications)
 * Complications in construction
 * If already constructed: write a brief summary of important constraints, include any revisions to apparatus, also reference the prior report where construction is described
 
@@ -49,16 +60,21 @@ When describing your results, present your data, using the guidelines below:
 * What happened? What did you find?
 * Show your experimental data in a professional way.
 ```python
-from aide_design.play import*
-x = np.array([1,2,3,4,5])
-y = np.array([1,2,3,4,5])
-plt.figure('ax',(10,8))
-plt.plot(x,y,'*')
-plt.savefig('/Users/jillianwhiting/github/Jillian-Whiting/Images/linear')
-plt.show()
+import aguaclara.research.procoda_parser as pp
+import matplotlib.pyplot as plt
+import numpy as np
+
+time, influent_turbidity, effluent_turbidity = pp.get_data_by_time(path="Data",
+      columns=[0,3, 4], start_date="6-14-2018", start_time="14:30")
+elapsed_time = (np.array(time)-time[0])*24
+
+fig, ax1 = plt.subplots()
+plt.plot(elapsed_time, effluent_turbidity)
+plt.plot(elapsed_time, influent_turbidity)
+plt.xlabel("Time (hours)")
+plt.ylabel("Effluent Turbidity (NTU)")
 ```
-![linear](https://github.com/jillianwhiting/Jillian-Whiting/blob/master/Images/linear.png?raw=true)
-Figure 1: Captions are very important for figures. Captions go below figures.
+Figure 3. Descriptive captions are very important for figures. Rather than including a title above your figure, write a caption below.
 
 ### Figure requirements
  - Create the graph using python (not Excel)
