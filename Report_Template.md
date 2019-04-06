@@ -3,7 +3,7 @@
 #### February 20, 2019
 
 <!-- Template Description -->
-This template will lay out all possible sections that could be used for a research report and manual. All research reports and manuals should strive to comply with this template, but every team will use different parts. In order to use this template, copy this file from the AguaClara team resources repository to your team's repository, and rename it for your team in a format similar to  "[Team Name] [Semester]". An example would be "Filter and Treatment Train Flow Control Spring 2017." For additional information on all the possibilities in markdown files, refer to the [AguaClara Interactive Tutorial](https://github.com/AguaClara/aguaclara_tutorial) and the [AguaClara Tutorial training pages](https://aguaclara.github.io/aguaclara_tutorial/). After you complete that step, please delete this description and everything above this.
+This template will lay out all possible sections that could be used for a research report and manual. All research reports and manuals should strive to comply with this template, but not all sections will be relevant to all teams. In order to use this template, copy this file from the AguaClara team resources repository to your team's repository, and rename it for your team in a format similar to  "[Team Name] [Semester]". An example would be "Filter and Treatment Train Flow Control Spring 2017." For guidance on writing Markdown documents, refer to the [AguaClara Interactive Tutorial](https://github.com/AguaClara/aguaclara_tutorial) and the [AguaClara Tutorial training pages](https://aguaclara.github.io/aguaclara_tutorial/). Once you are ready to write your report, please delete this description and everything above.
 
 # Team Name, Semester Year
 #### Authors
@@ -20,38 +20,50 @@ Discuss what is already known about your research area based on both external wo
 
 
 ## Methods
-Explain the techniques you have used to acquire additional data and insights. Reserve fine detail for the Manual at the end of the report, but use this section to give an overview with enough detail for the reader to understand your Results and Analysis. Describe your apparatus, and have a justification for every decision you made and every parameter you chose in the design of the apparatus. Be especially careful to detail the conditions your experiments were conducted under, as this information is especially important for interpreting your results
+Explain the techniques you have used to acquire additional data and insights. Reserve fine detail for the Manual at the end of the report, but use this section to give an overview with enough detail for the reader to understand your Results and Analysis. Be especially careful to detail the conditions your experiments were conducted under, as this information is especially important for interpreting your results.
 
 Below, some example sections are given. Sectioning the report is meant to keep similar information together.  Continue making sections as necessary, or delete sections if you do not need them. Feel free to add subsubsections to further delineate the information. For example, under the Experimental Apparatus section below, the EStaRS team might consider having sections such as "Filter Design" and "Filter Fabrication".
 
 ### Experimental Apparatus
-Explain your apparatus setup using enough detail such that future teams can recreate your apparatus. Make sure to explain why you built it this way. Create a schematic drawing of the apparatus (not a photo) that has clearly labeled components, flow paths, sensors, and reactor geometry.
+Describe your apparatus and justify every decision you made and every parameter you chose in its design. Explain your apparatus setup using enough detail such that future teams can recreate it.
 
-* Design (calculations, constraints):
-  * Use LaTeX to format equations in line ($\frac{-b\pm\sqrt{b^2-4ac}}{2a}$) or centered:
+Make sure to include:
 
-  \[\frac{-b\pm\sqrt{b^2-4ac}}{2a}\]
+* Design calculations
+  * Use [LaTeX](https://www.overleaf.com/learn/latex/Mathematical_expressions) to format mathematical equations. LaTeX equations can be written in-line ($x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$) or as equation elements:
 
-* Schematic (label parts)
-  <p align="center">
+  \[x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\]  
+
+ * Schematic drawing
+   * Clearly labeled components, flow paths, sensors, and reactor geometry.
+
+  <center>
     <img src="/Images/Example Schematic.png" height=300>
-  </p>
+  </center>
 
-  <p align="center">
+  <center>
     Figure 1. Above is an example schematic drawing of the Summer 2018 High Rate Sedimentation apparatus. It is labeled with components, flow paths, sensors, and reactor geometry.
-  </p>
+  </center>
 
-* Image (from lab, label parts)
-  <p align="center">
+* Labeled images
+
+
+  <center>
     <img src="/Images/Example Lab Image.JPG" height=300>
-  </p>
-  <p align="center">
-    Figure 2. Any photos taken in the lab should be clearly labeled and captioned as well.
-  </p>
+  </center>
+  <center>
+    Figure 2. Above is an example image of the Summer 2018 High Rate Sedimentation apparatus. All photos should be clearly labeled and captioned.
+  </center>
 
-* Materials (manufacturer, dimensions, and other specifications)
-* Complications in construction
-* If already constructed: write a brief summary of important constraints, include any revisions to apparatus, also reference the prior report where construction is described
+  | Label | Component             | Label | Component             |
+  |:-----:|:--------------------- |:-----:|:--------------------- |
+  |   1   | Water Pump            |   8   | Effluent Turbidimeter |
+  |   2   | Clay Pump             |   9   | Pressure Attenuator   |
+  |   3   | Coagulant Pump        |  10   | Coagulant Stock       |
+  |   4   | Waste Pump            |  11   | Clay Stock            |
+  |   5   | Flocculator           |  12   | Sedimentation Tank    |
+  |   6   | Pressure Sensor       |  13   | Waste Tube            |
+  |   7   | Influent Turbidimeter |       |                       |
 
 ### Procedure
 Discuss your experimental procedure. How did you run your experiment? What were you testing? What were the values of relevant parameters?
@@ -61,42 +73,62 @@ Present an observation (results), then explain what happened (analysis).  Each p
 
 When describing your results, present your data, using the guidelines below:
 * What happened? What did you find?
-* Show your experimental data in a professional way.
+* Show your experimental data in a professional way (see [Figure Requirements](#figure-requirements)).
 
-After describing a particular result, within a paragraph, go on to connect your work to fundamental physics, chemistry, statics, fluid mechanics, or whatever field is appropriate. Analyze your results and compare with theoretical expectations; or, if you have not yet done the experiments, describe your expectations based on established knowledge. Include implications of your results. How will your results influence the design of AguaClara plants? If possible provide clear recommendations for design changes that should be adopted. Show your experimental data in a professional way using the following guidelines:
+After describing a particular result, within a paragraph, go on to connect your work to fundamental physics, chemistry, statics, fluid mechanics, or whatever field is appropriate. Analyze your results and compare with theoretical expectations; or, if you have not yet done the experiments, describe your expectations based on established knowledge.
 * Why did you get those results/data?
 * Did these results line up with expectations?
 * What went wrong?
 * If the data do not support your hypothesis, is there another hypothesis that describes your new data?
 
-### Figure requirements
- - Create the graph using python (not Excel)
- - If the x axis is time then make zero time reflect the beginning of the test.
- - Use a white background for all graphs.
- - Most data will have both x and y values and thus should be presented using an xy scatter plot.
- - Label all axes and include units where appropriate.
- - Axis scale labels should be in the margin of the graph and not inside the graph border.
- - Eliminate parts of the range in both x and y axis that aren't used or that aren't meaningful.
- - Place a caption with a brief description below the graph. Add this caption using the wiki formatting, not in your graphing software.
- - Use data symbols to show data points unless there is so much data that the symbols overlap. If the data symbols overlap it is better to connect the data points with a line and not show the data symbols.
- - When presenting multiple plots on a single graph make sure that it is easy to distinguish the plots using the legend.
- - If curve fitting is used explain why and include the equation (elsewhere in the report).
- - If a model or theoretical curve is presented it should be a smooth curve without data points.
- - Use the same font in the graphs as you use in the text of the report.
- - Insert the graph in your report after the first reference to it in the text. Inserted the graph after the next paragraph break
- - Scale the size of the graph so it is large enough to see the data and read the text without having to follow a link to see a larger image. Avoid using hyperlinks on images because that causes the export to Microsoft Word option to not include the image.
+Include implications of your results. How will your results influence the design of AguaClara plants? If possible provide clear recommendations for design changes that should be adopted.
 
- <p align="center">
+### Figure requirements
+The [Data Analysis&#46;md](https://github.com/AguaClara/team_resources/blob/master/Example%20Code/Data%20Analysis.md) document in the Example Code folder of the [Team Resources](https://github.com/AguaClara/team_resources) repository has examples for graphing data in Python. In these examples, many of the requirement below have already been met, so we recommend you understand and use them.
+
+Basics
+ - Create the graph using Python and the [Matplotlib](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.html) package.
+- Place a caption with a brief description below the graph. Add this caption using the wiki formatting, not in your graphing software.
+- Insert the graph in your report after the first paragraph with a reference to it.
+
+Appearance
+- Use a white background.
+- Use the same font in the graphs as you use in the text of the report.
+- Scale the size of the graph so it is large enough to see the data and read the text without having to follow a link to see a larger image. Avoid using hyperlinks on images, because an export to Microsoft Word will not include the image.
+
+ Axes
+ - Data with x and y values should be presented using an xy scatter plot.
+ - Label all axes and include units.
+ - Axis scale labels should be in the margin of the graph, not inside the graph border.
+ - If the x-axis is time, then make time zero the beginning of the test.
+ - Eliminate ranges of the x and y axes that are not used or meaningful.
+
+Data Representation
+ - Use data symbols, not a line, to show discrete data points.
+ - However, if there is so much data that the symbols overlap, it is better to connect the data points with a line and not show the data symbols.
+
+Multiple Plots
+ - When presenting multiple plots on a single graph make sure that it is easy to distinguish the plots using the legend.
+
+Curve Fitting
+ - If curve fitting is used, explain why and include the equation elsewhere in the report.
+ - The model or theoretical curve should be a smooth curve without data points.
+
+Below is a graph created by example code in the [Data Analysis&#46;md](https://github.com/AguaClara/team_resources/blob/master/Example%20Code/Data%20Analysis.md) document referenced in the beginning of this section. **Note that the code is included and linked at the bottom of this report. Make any code you use for data analysis is provided this way too.**
+
+
+ <center>
    <img src="/Images/Turbidity.png">
- </p>
- <p align="center">
-   Figure 3. Descriptive captions are very important for figures. Rather than including a title above your figure, write a caption below.
- </p>
+ </center>
+
+
+ Figure 3. Descriptive captions are very important for figures. Rather than including a title above your figure, write a caption below. The code used to create this graph can be found in the [Python Code](#python-code) section of this report.
+
 
 ## Conclusions
 Explain what you have learned and how that influences your next steps. Why does what you discovered matter to AguaClara?
 
-Make sure that you defend your conclusions with facts and results.
+Make sure that you have defended your conclusions with facts and results.
 
 ## Future Work
 Describe your plan of action for the next several weeks of research. Detail the next steps for this team. How can AguaClara use what you discovered for future projects? Your suggestions for challenges for future teams are most welcome. Should research in this area continue?
@@ -108,10 +140,16 @@ Logan, B. E., Hermanowicz, S. W., & Parker,A. S. (1987). A Fundamental Model for
 The goal of this section is to provide all of the guidance that would be necessary for a future team to pick up your work where you left off. Please try to be thorough and put yourselves in the shoes of a newcomer to the project. Below are some recommended sections, but the manual will likely take a slightly different form for each team.
 
 ## Fabrication Details
-Include any information related to the fabrication of equipment, experimental apparatuses, or technologies. Include the purpose of each step and the fabrication methods used. Reference appropriate safety precautions.
+Include any information related to the fabrication of equipment, technologies, or experimental apparatuses, such as
+
+* materials, with dimensions
+* fabrication methods and the purpose of each step
+* complications and constraints in construction
+* revisions made to a previous design, with a reference to the report where the design is described
+* appropriate safety precautions
 
 ## Special Components
-If your subteam uses a particular part that is unique and you could foresee a future subteam needing to order it or learn more about it, please include basic information like the vendor where it was purchased, catalog/item number, and a link to any documentation.
+If your subteam uses a particular part that is unique and you could foresee a future subteam needing to order it or learn more about it, please include basic information such as its vendor, its catalog/item number, and a link to any documentation.
 
 ## Experimental Methods
 ### Set-up
@@ -130,7 +168,10 @@ Step 1.
 Another potential section could include a list of things that you need to check before running an experiment.
 
 ## ProCoDA Method File
-Use this section to explain your method file. This could be broken up into several components as shown below:
+
+**Upload your ProCoDA method file to your Github repository and provide a [link]() it in your report.**
+
+Use the rest of this section to explain your method file. Your explanation can be broken up into several components as shown below:
 
 ### States
 Here, you should describe the function of each state in your method file, both in terms of its overall purpose and also in terms of the details that make it distinct from other states. For example:
@@ -142,23 +183,94 @@ Here, you should list the set points used in your method file and explain their 
 
 ## Python Code
 
-### Variables
-$g$: gravity
-$\sigma$: dispersion
-$a$: amplitude
-$h$: water depth
-$H$: distance from wave crest to trough (2$a$)
-$T$: wave period
-$\lambda$: wavelength
-$k$: wavenumber
-$c_p$: celerity (wave phase speed)
-$P$: pressure
-$F$: force
-$u$, $w$: x-velocity, z-velocity components
+In this section, provide any code that was a significant part of your research, including in making theoretical calculations, determining parameters for your apparatus and your experiment, or analyzing your data.
+
+If your code is repetitive (e.g. similar code for creating different graphs) or too long, you may instead provide a [link to a file](https://github.com/AguaClara/team_resources/blob/master/Example%20Code/Data%20Analysis.md) with your code that has been *uploaded to your repository*.
+
+### Code for Figure 3
+
+Provide a brief description of your code, for example:
+
+Below is the code used to create the influent and effluent turbidity graph in Figure 3, using the `aguaclara.research.procoda_parser` module to read the turbidity data from a ProCoDA data file.
+
+**Note: your code should be able to run as is in this report. That means any files you reference should have the correct directories/paths, so that anybody who downloads your repository can run the code in your report and find the same results.** For example, the code below references a ProCoDA data file in the Data folder of this repository. If that file is not present or moved to a different folder, this code will result in an error.
 
 ```python
+import aguaclara.research.procoda_parser as pp
+import matplotlib.pyplot as plt
+import numpy as np
 
+# read time, influent turbidity, and effluent turbidity columns from
+# ProCoDA data file from 6-14-2018 as NumPy arrays
+time, influent_turbidity, effluent_turbidity = pp.get_data_by_time(
+      path="Data", columns=[0, 3, 4], start_date="6-14-2018",
+      start_time="15:40", end_time="23:30")
+elapsed_time = (np.array(time)-time[0])*24
+
+# set up multiple subplots
+fig, ax1 = plt.subplots()
+# make the first subplot (Effluent Turbidity vs Time)
+ax1.set_xlabel("Time (hours)")
+ax1.set_ylabel("Effluent Turbidity (NTU)")
+line1, = ax1.plot(elapsed_time, effluent_turbidity, color="blue")
+
+# set the x-axis of the second subplot equal to the first's
+ax2 = ax1.twinx()
+# make the second subplot (Influent Turbidity vs Time)
+ax2.set_ylabel("Influent Turbidity (NTU)")
+# adjust the y-axis
+ax2.set_ylim(60,120)
+line2, = ax2.plot(elapsed_time, influent_turbidity, color="green")
+
+plt.legend((line1, line2), ("Effluent", "Influent"))
 ```
+
+### Code for Experimental Design
+
+Make sure variables in your code, as well as anything that might not be easily understood by a newcomer, is well commented. Also include the outputs of your code, if applicable and not given earlier in the report.
+
+```python
+import aguaclara.research.peristaltic_pump as pp
+import aguaclara.research.stock_qc as stock_qc
+from aguaclara.core.units import unit_registry as u
+
+# volume per revolution flowing from the pump for PACl (coagulant) stock
+vol_per_rev_PACl = pp.vol_per_rev_3_stop("yellow-blue")
+# revolutions per minute of PACl stock pump
+rpm_PACl = 3 * u.rev/u.min
+# flow rate from the PACl stock pump
+Q_PACl = pp.flow_rate(vol_per_rev_PACl, rpm_PACl)
+
+
+# desired system flow rate
+Q_sys = 2 * u.mL/u.s
+# desired system concentration of PACl
+C_sys = 1.4 * u.mg/u.L
+# a variable representing the reactor and its parameters
+reactor = stock_qc.Variable_C_Stock(Q_sys, C_sys, Q_PACl)
+
+
+# required concentration of PACl stock
+C_stock_PACl = reactor.C_stock()
+# concentration of purchased PACl super stock in lab
+C_super_PACl = 70.28 * u.g/u.L
+# dilution factor of PACl super stock necessary to achieve PACl stock
+# concentration (in L of super stock per L water)
+dilution = reactor.dilution_factor(C_super_PACl)
+mL_per_L = dilution * 1000
+
+print("A reactor with a system flow rate of", Q_sys, ",")
+print("a system PACl concentration of", C_sys, ",")
+print("and a PACl stock flow rate of", Q_PACl)
+print("will require a dilution factor of", round(mL_per_L.magnitude, 3),
+  "milliliters of PACl super")
+print("stock per liter of water for the PACl stock.")
+```
+
+Output:
+
+A reactor with a system flow rate of 2 milliliter/second, a system PACl concentration of 1.4 milligram/liter, and a PACl stock flow rate of 0.007442 milliliter/second will require a dilution factor of 5.353 milliliters of PACl super stock per liter of water for the PACl stock.
+
 
 <!-- DELETE THIS SECTION BEFORE SUBMITTING -->
 ----------------------------------------------
