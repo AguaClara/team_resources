@@ -226,13 +226,14 @@ plt.xlabel('Temperature (ºC)')
 plt.ylabel('Solubility of O2 (mg/L)Y label')
 plt.plot(temperature, solubility, 'o')
 plt.plot(x_range, x_range * slope + intercept)
-plt.savefig("Images/Lin Reg.png")
 ```
 
 Output:
 
 Slope: -0.17145454545454547
+
 Intercept: 13.277272727272727
+
 R-squared: 0.944743216539532
 
 <img src="../Images/Lin Reg.png">
@@ -254,6 +255,9 @@ def exp_func(x, a, b, c):
 
 cf_output = opt.curve_fit(exp_func, temperature, solubility)
 optimal_parameters = cf_output[0]
+print("a:", optimal_parameters[0])
+print("b:", optimal_parameters[1])
+print("c:", optimal_parameters[2])
 
 x_range = np.arange(temperature.iloc[0], temperature.iloc[-1]+1, step=0.1)
 
@@ -261,9 +265,14 @@ plt.xlabel('Temperature (ºC)')
 plt.ylabel('Solubility of O2 (mg/L)Y label')
 plt.plot(temperature, solubility, 'o')
 plt.plot(x_range, exp_func(x_range, *optimal_parameters))
-plt.savefig("Images/Nonlin Reg.png")
 ```
 
 Output:
+
+a: 10.694801786694969
+
+b: 0.03546205767749912
+
+c: 3.858064720006462
 
 <img src="../Images/Nonlin Reg.png">
