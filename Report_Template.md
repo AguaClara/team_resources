@@ -3,7 +3,7 @@
 #### February 20, 2019
 
 <!-- Template Description -->
-This template will lay out all possible sections that could be used for a research report and manual. All research reports and manuals should strive to comply with this template, but not all sections will be relevant to all teams. In order to use this template, copy this file from the AguaClara team resources repository to your team's repository, and rename it for your team in a format similar to  "[Team Name] [Semester]". An example would be "Filter and Treatment Train Flow Control Spring 2017." For guidance on writing Markdown documents, refer to the [AguaClara Interactive Tutorial](https://github.com/AguaClara/aguaclara_tutorial) and the [AguaClara Tutorial training pages](https://aguaclara.github.io/aguaclara_tutorial/). Once you are ready to write your report, please delete this description and everything above.
+This template will lay out all possible sections that could be used for a research report and manual. All research reports and manuals should strive to comply with this template, but not all sections will be relevant to all teams. In order to use this template, copy this file from the AguaClara team resources repository to your team's repository, and rename it for your team in a format similar to  "[Team Name] [Semester]". An example would be "Filter and Treatment Train Flow Control Spring 2017." For guidance on writing Markdown documents, refer to the [AguaClara Tutorial wiki pages](https://aguaclara.github.io/aguaclara_tutorial/). Once you are ready to write your report, please delete this description and everything above.
 
 # Team Name, Semester Year
 #### Authors
@@ -84,10 +84,10 @@ After describing a particular result, within a paragraph, go on to connect your 
 Include implications of your results. How will your results influence the design of AguaClara plants? If possible provide clear recommendations for design changes that should be adopted.
 
 ### Figure requirements
-The [Data Analysis&#46;md](https://github.com/AguaClara/team_resources/blob/master/Example%20Code/Data%20Analysis.md) document in the Example Code folder of the [Team Resources](https://github.com/AguaClara/team_resources) repository has examples for graphing data in Python. In these examples, many of the requirement below have already been met, so we recommend you understand and use them.
+The [Data Analysis in Python](https://aguaclara.github.io/aguaclara_tutorial/python/data-analysis.html) page of the AguaClara Tutorial wiki pages shows how to create graphs in Python to meet these requirements. Make sure to read the sections on [Plotting with Matplotlib](https://aguaclara.github.io/aguaclara_tutorial/python/data-analysis.html#plotting-with-matplotlib) and, if you are working with ProCoDA data files, [Reading ProCoDA Data with the AguaClara Package](https://aguaclara.github.io/aguaclara_tutorial/python/data-analysis.html#reading-procoda-data-with-the-aguaclara-package).
 
 Basics
- - Create the graph using Python and the [Matplotlib](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.html) package.
+- Create your graphs using Python. Include the code for your graph in the [Python Code](#python-code) section of your report.
 - Place a caption with a brief description below the graph. Add this caption using the wiki formatting, not in your graphing software.
 - Insert the graph in your report after the first paragraph with a reference to it.
 
@@ -114,15 +114,13 @@ Curve Fitting
  - If curve fitting is used, explain why and include the equation elsewhere in the report.
  - The model or theoretical curve should be a smooth curve without data points.
 
-Below is a graph created by example code in the [Data Analysis&#46;md](https://github.com/AguaClara/team_resources/blob/master/Example%20Code/Data%20Analysis.md) document referenced in the beginning of this section. **Note that the code is included and linked at the bottom of this report. Make any code you use for data analysis is provided this way too.**
-
+Here is an example graph:
 
  <center>
    <img src="/Images/Turbidity.png">
  </center>
 
-
- Figure 3. Descriptive captions are very important for figures. Rather than including a title above your figure, write a caption below. The code used to create this graph can be found in the [Python Code](#python-code) section of this report.
+ Figure 3. Descriptive captions are very important for figures. The code used to create this graph can be found in the [Python Code](#python-code) section of this report.
 
 
 ## Conclusions
@@ -183,44 +181,36 @@ Here, you should list the set points used in your method file and explain their 
 
 ## Python Code
 
-In this section, provide any code that was a significant part of your research, including in making theoretical calculations, determining parameters for your apparatus and your experiment, or analyzing your data.
+In this section, provide any code that was a significant part of your research, including in making theoretical calculations, determining parameters for your experiment, or analyzing your data.
 
-If your code is repetitive (e.g. similar code for creating different graphs) or too long, you may instead provide a [link to a file](https://github.com/AguaClara/team_resources/blob/master/Example%20Code/Data%20Analysis.md) with your code that has been *uploaded to your repository*.
+**Note: your code should be able to run as is in your report. This means any files you reference should have the correct paths/URL's, so that anybody can run the code in your report and find the same results.**
 
 ### Code for Figure 3
 
-Provide a brief description of your code, for example:
-
-Below is the code used to create the influent and effluent turbidity graph in Figure 3, using the `aguaclara.research.procoda_parser` module to read the turbidity data from a ProCoDA data file.
-
-**Note: your code should be able to run as is in this report. That means any files you reference should have the correct directories/paths, so that anybody who downloads your repository can run the code in your report and find the same results.** For example, the code below references a ProCoDA data file in the Data folder of this repository. If that file is not present or moved to a different folder, this code will result in an error.
-
 ```python
-import aguaclara.research.procoda_parser as pp
+import aguaclara as ac
+from aguaclara.core.units import u
 import matplotlib.pyplot as plt
-import numpy as np
 
-# read time, influent turbidity, and effluent turbidity columns from
-# ProCoDA data file from 6-14-2018 as NumPy arrays
-time, influent_turbidity, effluent_turbidity = pp.get_data_by_time(
-      path="Data", columns=[0, 3, 4], start_date="6-14-2018",
-      start_time="15:40", end_time="23:30")
-elapsed_time = (np.array(time)-time[0])*24
+path = "https://raw.githubusercontent.com/AguaClara/team_resources/master/Data/datalog%206-14-2018.xls"
 
-# set up multiple subplots
+time = ac.column_of_time(path=path, start=2250, end=5060).to(u.hr)
+influent_turbidity = ac.column_of_data(path=path, start=2250, column=3, end=5060)
+effluent_turbidity = ac.column_of_data(path=path, start=2250, column=4, end=5060)
+
+# set up multiple subplots with same x-axis
 fig, ax1 = plt.subplots()
+ax2 = ax1.twinx()
+
 # make the first subplot (Effluent Turbidity vs Time)
 ax1.set_xlabel("Time (hours)")
 ax1.set_ylabel("Effluent Turbidity (NTU)")
-line1, = ax1.plot(elapsed_time, effluent_turbidity, color="blue")
+line1, = ax1.plot(time, effluent_turbidity, color="blue")
 
-# set the x-axis of the second subplot equal to the first's
-ax2 = ax1.twinx()
 # make the second subplot (Influent Turbidity vs Time)
 ax2.set_ylabel("Influent Turbidity (NTU)")
-# adjust the y-axis
 ax2.set_ylim(60,120)
-line2, = ax2.plot(elapsed_time, influent_turbidity, color="green")
+line2, = ax2.plot(time, influent_turbidity, color="green")
 
 plt.legend((line1, line2), ("Effluent", "Influent"))
 ```
@@ -230,25 +220,22 @@ plt.legend((line1, line2), ("Effluent", "Influent"))
 Make sure variables in your code, as well as anything that might not be easily understood by a newcomer, is well commented. Also include the outputs of your code, if applicable and not given earlier in the report.
 
 ```python
-import aguaclara.research.peristaltic_pump as pp
-import aguaclara.research.stock_qc as stock_qc
-from aguaclara.core.units import unit_registry as u
+import aguaclara as ac
+from aguaclara.core.units import u
 
 # volume per revolution flowing from the pump for PACl (coagulant) stock
-vol_per_rev_PACl = pp.vol_per_rev_3_stop("yellow-blue")
+vol_per_rev_PACl = ac.vol_per_rev_3_stop("yellow-blue")
 # revolutions per minute of PACl stock pump
 rpm_PACl = 3 * u.rev/u.min
 # flow rate from the PACl stock pump
-Q_PACl = pp.flow_rate(vol_per_rev_PACl, rpm_PACl)
-
+Q_PACl = ac.flow_rate(vol_per_rev_PACl, rpm_PACl)
 
 # desired system flow rate
 Q_sys = 2 * u.mL/u.s
 # desired system concentration of PACl
 C_sys = 1.4 * u.mg/u.L
 # a variable representing the reactor and its parameters
-reactor = stock_qc.Variable_C_Stock(Q_sys, C_sys, Q_PACl)
-
+reactor = ac.Variable_C_Stock(Q_sys, C_sys, Q_PACl)
 
 # required concentration of PACl stock
 C_stock_PACl = reactor.C_stock()
